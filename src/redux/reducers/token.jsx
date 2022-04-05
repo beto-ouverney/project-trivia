@@ -1,13 +1,13 @@
-import { USER_LOGIN } from '../actions/LoginAction';
+import { TOKEN } from '../actions/TokenAction';
 
 const INITIAL_STATE = {
-  email: '',
+  token: '',
 };
 
 function reducerUser(state = INITIAL_STATE, action) {
   switch (action.type) {
-  case USER_LOGIN:
-    return { ...state, email: action.email };
+  case TOKEN:
+    return { token: action.value };
   default:
     return state;
   }
