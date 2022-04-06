@@ -19,7 +19,7 @@ class Header extends Component {
     const { email } = this.props;
     const hash = md5(email).toString();
     const imgUrl = `https://www.gravatar.com/avatar/${hash}`;
-    this.state({ imgUrl });
+    this.setState({ imgUrl });
   }
 
   render() {
