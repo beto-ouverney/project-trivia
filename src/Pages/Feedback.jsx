@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Feedback extends Component {
-  btnPlayAgain () => {
+  btnPlayAgain = () => {
     const { history } = this.props;
     history.push('/');
   }
@@ -16,11 +16,11 @@ class Feedback extends Component {
         <p data-testid="feedback-text">
           { assertions > minScore ? 'Well Done!' : 'Could be better...' }
         </p>
-        <p data-testid="feedback-total-score">{`Placar: ${ score }`}</p>
-        <p data-testid="feedback-total-question">{`Corretas: ${ assertions }`}</p>
+        <p data-testid="feedback-total-score">{`Score: ${ score }`}</p>
+        <p data-testid="feedback-total-question">{`Assertions: ${ assertions }`}</p>
         <button
           data-testid="btn-play-again"
-          onClick={}
+          onClick={ this.btnPlayAgain }
         >
           Play Again
         </button>
