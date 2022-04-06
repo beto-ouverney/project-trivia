@@ -16,15 +16,17 @@ class Feedback extends Component {
         <p data-testid="feedback-text">
           { assertions > minScore ? 'Well Done!' : 'Could be better...' }
         </p>
-        <p data-testid="feedback-total-score">{`Score: ${ score }`}</p>
-        <p data-testid="feedback-total-question">{`Assertions: ${ assertions }`}</p>
+        <p data-testid="feedback-total-score">{`Score: ${score}`}</p>
+        <p data-testid="feedback-total-question">{`Assertions: ${assertions}`}</p>
         <button
           data-testid="btn-play-again"
+          type="button"
           onClick={ this.btnPlayAgain }
         >
           Play Again
         </button>
       </div>
+    );
   }
 }
 
@@ -40,7 +42,9 @@ const mapStateToProps = (state) => ({
 Feedback.proTypes = {
   score: PropTypes.number,
   assertions: PropTypes.number,
-  history: PropTypes.shape({ push: PropTypes.func }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
 }.isRequired;
 
 export default connect(mapStateToProps, null/* mapDispatchToProps */)(Feedback);

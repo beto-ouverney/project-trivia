@@ -3,8 +3,8 @@ import player from './player';
 import token from './token';
 
 const rootReducer = combineReducers({
-    player,
-    token,
+  player,
+  token,
 });
 
 export default rootReducer;
