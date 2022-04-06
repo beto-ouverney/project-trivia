@@ -58,16 +58,18 @@ handleClick2 = () => {
           </p>
         </div>
         <div>
-          {(answers.map((e) => (
-            <button
-              key={ e.response }
-              type="button"
-              data-testid={ e.testId }
-              onClick={ this.handleClick }
-            >
-              {e.response}
-            </button>
-          )).sort(() => Math.random() - shuffle))}
+          <div data-testid="answer-options">
+            {(answers.map((e) => (
+              <button
+                key={ e.response }
+                type="button"
+                data-testid={ e.testId }
+                onClick={ this.handleClick }
+              >
+                {e.response}
+              </button>
+            )).sort(() => Math.random() - shuffle))}
+          </div>
           {button && <button type="button" onClick={ this.handleClick2 }>Próxima</button>}
         </div>
       </div>
