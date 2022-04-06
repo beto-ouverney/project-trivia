@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Header from '../Components/Header';
 
 class Feedback extends Component {
   btnPlayAgain = () => {
@@ -13,6 +14,7 @@ class Feedback extends Component {
     const minScore = 3;
     return (
       <div>
+        <Header />
         <p data-testid="feedback-text">
           { assertions > minScore ? 'Well Done!' : 'Could be better...' }
         </p>
