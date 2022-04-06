@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 function reducerUser(state = INITIAL_STATE, action) {
   switch (action.type) {
   case TOKEN:
-    return { token: action.value };
+    return action.value;
   default:
     return state;
   }
