@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 
-class Feedback extends Component {
-render() {
-  const { assertions, score } = this.props;
-  return (
-    <div>
-      <p>
+// class Feedback extends Component {
+//   render() {
+//     const { assertions, score } = this.props;
+//     return (
+//       <div>
+//         <p />
+//       </div>
+//     );
+//   }
+// }
 
-      </p>
-    </div>
-  );
-  }
-}
-
-export default Feedback;
+// export default Feedback;
