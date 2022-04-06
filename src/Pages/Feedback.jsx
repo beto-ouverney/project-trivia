@@ -39,12 +39,12 @@ const mapStateToProps = (state) => ({
 
 }); */
 
-Feedback.proTypes = {
+Feedback.propTypes = {
   score: PropTypes.number,
   assertions: PropTypes.number,
   history: PropTypes.shape({
     push: PropTypes.func,
-  }),
+  }).isRequired,
 }.isRequired;
 
 export default connect(mapStateToProps, null/* mapDispatchToProps */)(Feedback);
