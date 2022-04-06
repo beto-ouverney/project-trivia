@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,6 +7,11 @@ class Feedback extends Component {
   btnPlayAgain = () => {
     const { history } = this.props;
     history.push('/');
+  }
+
+  btnRanking = () => {
+    const { history } = this.props;
+    history.push('/ranking');
   }
 
   render() {
@@ -27,6 +31,13 @@ class Feedback extends Component {
           onClick={ this.btnPlayAgain }
         >
           Play Again
+        </button>
+        <button
+          data-testid="btn-ranking"
+          type="button"
+          onClick={ this.btnRanking }
+        >
+          Ranking
         </button>
       </div>
     );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getToken, getQuestions } from '../Helpers/triviaApi';
 import Header from '../Components/Header';
+import Question from '../Components/Question';
 
 class TriviaGame extends Component {
   constructor() {
@@ -18,22 +19,26 @@ class TriviaGame extends Component {
 
   getQuestions = async () => {
     const { token } = this.props;
-    let questionsReturn = await getQuestions(token);
+    const questionsReturn = await getQuestions(token);
     const returnError = 3;
     if (questionsReturn.response_code === returnError) {
       const newToken = await getToken();
-      questionsReturn = await getQuestions(newToken);
+      const questionsReturn2 = await getQuestions(newToken);
+      this.setState({ questions: questionsReturn2.results });
+    } else {
+      this.setState({ questions: questionsReturn.results });
     }
-    console.log(questionsReturn);
-    this.setState({ questions: questionsReturn });
   }
 
   render() {
     const { questions } = this.state;
+    console.log(questions);
     return (
       <>
         <Header />
-        <div>ed</div>
+        {questions.length > 0 && <Question
+          questions={ questions }
+        />}
       </>
     );
   }
