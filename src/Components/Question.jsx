@@ -36,9 +36,7 @@ handleClick2 = () => {
         testId: `wrong-answer-${i}` };
       incorrectAnswers.push(obj2);
     });
-    const answers = [obj, ...incorrectAnswers];
-    const shuffle = 0.5;
-    answers.sort(() => Math.random() - shuffle);
+    const answers = [...incorrectAnswers, obj];
     this.setState({ answers });
   }
 
@@ -46,6 +44,7 @@ handleClick2 = () => {
     const { answers, button, index } = this.state;
     const { questions } = this.props;
     const { category, question } = questions[index];
+    const shuffle = 0.5;
     return (
 
       <div>
@@ -59,7 +58,7 @@ handleClick2 = () => {
           </p>
         </div>
         <div>
-          {answers.map((e) => (
+          {(answers.map((e) => (
             <button
               key={ e.response }
               type="button"
@@ -68,7 +67,7 @@ handleClick2 = () => {
             >
               {e.response}
             </button>
-          ))}
+          )).sort(() => Math.random() - shuffle))}
           {button && <button type="button" onClick={ this.handleClick2 }>Próxima</button>}
         </div>
       </div>
