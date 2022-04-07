@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import Timer from './Timer';
-import { scoreState } from '../redux/actions/FeedbackAction';
+import './Question.css';
+import { scoreState, assertionsState } from '../redux/actions/FeedbackAction';
 
 class Question extends Component {
   constructor() {
     super();
     this.state = {
-      button: false,
       answers: [],
       index: 0,
       timer: 30,
       cantRespond: false,
       correct: 'correct-answer',
-      right: 0,
+      assertions: 0,
     };
   }
 
@@ -64,7 +63,7 @@ initTimer = () => {
 }
 
 setTimeOut = () => {
-  this.setState({ button: true, cantRespond: true });
+  this.setState({ cantRespond: true });
 }
 
 changeClassAnswers = () => {
@@ -80,30 +79,31 @@ changeClassAnswers = () => {
 }
 
 handleClick = ({ target }) => {
-  const { interval, correct, right } = this.state;
+  const { interval, correct, assertions } = this.state;
   const button = document.getElementById('next');
-  button.id = 'show';
+  button.className = 'show';
   this.changeClassAnswers();
-  this.setState({ button: true, cantRespond: true });
+  this.setState({ cantRespond: true });
   clearInterval(interval);
   if (target.id === correct) {
     this.getPontuaction();
-    this.setState({ right: right + 1 });
+    this.setState({ assertions: assertions + 1 });
   }
 }
 
 handleNext = () => {
-  const { index } = this.state;
+  const { index, assertions } = this.state;
+  const { assertionsDispatch } = this.props;
   const endGame = 4;
-  const button = document.getElementById('show');
-  button.id = 'next';
+  const button = document.getElementById('next');
+  button.className = 'next';
   if (index < endGame) {
-    this.setState({ button: false,
-      index: index + 1,
+    this.setState({ index: index + 1,
       cantRespond: false },
     () => this.getrespostas());
   } else {
     const { history } = this.props;
+    assertionsDispatch(assertions);
     history.push('/feedback');
   }
 }
@@ -127,7 +127,7 @@ handleNext = () => {
   }
 
   render() {
-    const { answers, button, index, cantRespond, timer } = this.state;
+    const { answers, index, cantRespond, timer } = this.state;
     const { questions } = this.props;
     const { category, question } = questions[index];
     return (
@@ -158,6 +158,7 @@ handleNext = () => {
             data-testid="btn-next"
             type="button"
             id="next"
+            className="next"
             onClick={ this.handleNext }
           >
             Next
@@ -174,6 +175,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   scoreDispatch: (value) => dispatch(scoreState(value)),
+  assertionsDispatch: (value) => dispatch(assertionsState(value)),
 });
 
 Question.propTypes = {
