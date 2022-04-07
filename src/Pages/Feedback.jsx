@@ -19,10 +19,10 @@ class Feedback extends Component {
       <div>
         <Header />
         <p data-testid="feedback-text">
-          { assertions > minScore ? 'Well Done!' : 'Could be better...' }
+          { assertions >= minScore ? 'Well Done!' : 'Could be better...' }
         </p>
-        <p data-testid="feedback-total-score">{`Score: ${score}`}</p>
-        <p data-testid="feedback-total-question">{`Assertions: ${assertions}`}</p>
+        <p data-testid="feedback-total-score">{score}</p>
+        <p data-testid="feedback-total-question">{assertions}</p>
         <button
           data-testid="btn-play-again"
           type="button"
