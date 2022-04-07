@@ -7,6 +7,11 @@ goHomeClick = () => {
   history.push('/');
 }
 
+/* name: nome-da-pessoa,
+assertions: número-de-acertos,
+score: pontuação,
+gravatarEmail: email-da-pessoa, */
+
 render() {
   return (
     <header className="btn-hanking">

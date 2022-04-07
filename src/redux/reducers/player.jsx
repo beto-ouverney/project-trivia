@@ -1,5 +1,5 @@
 import { USER_LOGIN } from '../actions/LoginAction';
-import { USER_SCORE, USER_ASSERTIONS } from '../actions/FeedbackAction';
+import { USER_SCORE, USER_ASSERTIONS, RESET_DATA } from '../actions/FeedbackAction';
 
 const INITIAL_STATE = {
   name: '',
@@ -23,6 +23,8 @@ function reducerUser(state = INITIAL_STATE, action) {
     return { ...state,
       score: action.score,
     };
+  case RESET_DATA:
+    return INITIAL_STATE;
   default:
     return state;
   }
