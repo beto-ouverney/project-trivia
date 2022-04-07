@@ -5,6 +5,7 @@ import { getToken } from '../Helpers/triviaApi';
 import { TokenAction } from '../redux/actions/TokenAction';
 import { LoginAction } from '../redux/actions/LoginAction';
 import SettingsBtn from '../Components/SettingsBtn';
+import Logo from '../trivia.png';
 
 class Login extends Component {
   constructor() {
@@ -45,39 +46,42 @@ class Login extends Component {
     const { login, email, btnLoginDisabled } = this.state;
     const { history } = this.props;
     return (
-      <div>
-        <SettingsBtn history={ history } />
-        <label htmlFor="login">
-          <input
-            type="text"
-            data-testid="input-player-name"
-            placeholder="Coloque seu nome"
-            id="login"
-            name="login"
-            value={ login }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="email">
-          <input
-            type="email"
-            data-testid="input-gravatar-email"
-            placeholder="Coloque seu e-mail"
-            id="email"
-            name="email"
-            value={ email }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <button
-          disabled={ btnLoginDisabled }
-          type="button"
-          data-testid="btn-play"
-          onClick={ this.handleClick }
-        >
-          Play
-        </button>
-      </div>
+      <>
+        <img src={ Logo } alt="triviapng" />
+        <div>
+          <SettingsBtn history={ history } />
+          <label htmlFor="login">
+            <input
+              type="text"
+              data-testid="input-player-name"
+              placeholder="Coloque seu nome"
+              id="login"
+              name="login"
+              value={ login }
+              onChange={ this.handleChange }
+            />
+          </label>
+          <label htmlFor="email">
+            <input
+              type="email"
+              data-testid="input-gravatar-email"
+              placeholder="Coloque seu e-mail"
+              id="email"
+              name="email"
+              value={ email }
+              onChange={ this.handleChange }
+            />
+          </label>
+          <button
+            disabled={ btnLoginDisabled }
+            type="button"
+            data-testid="btn-play"
+            onClick={ this.handleClick }
+          >
+            Play
+          </button>
+        </div>
+      </>
     );
   }
 }
