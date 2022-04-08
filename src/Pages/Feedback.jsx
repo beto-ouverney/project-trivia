@@ -32,6 +32,8 @@ addToRanking = () => {
     score,
     picture: imgUrl,
   };
+  const { resetGame } = this.props;
+  resetGame();
   setToLocalStorage(player);
 }
 
