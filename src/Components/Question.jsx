@@ -50,6 +50,8 @@ decrementTimer = () => {
     const { interval } = this.state;
     this.setTimeOut();
     clearInterval(interval);
+    const button = document.getElementById('next');
+    button.className = 'show';
   } else {
     this.setState((prevState) => ({ timer: prevState.timer - 1 }));
   }
