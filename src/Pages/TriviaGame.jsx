@@ -32,12 +32,14 @@ class TriviaGame extends Component {
 
   render() {
     const { questions } = this.state;
-    console.log(questions);
+    const { history } = this.props;
+
     return (
       <>
         <Header />
         {questions.length > 0 && <Question
           questions={ questions }
+          history={ history }
         />}
       </>
     );
