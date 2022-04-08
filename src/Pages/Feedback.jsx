@@ -20,6 +20,8 @@ class Feedback extends Component {
 
   btnRanking = () => {
     const { history } = this.props;
+    const { resetGame } = this.props;
+    resetGame();
     history.push('/ranking');
   }
 
@@ -32,8 +34,6 @@ addToRanking = () => {
     score,
     picture: imgUrl,
   };
-  const { resetGame } = this.props;
-  resetGame();
   setToLocalStorage(player);
 }
 
